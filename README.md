@@ -1,85 +1,112 @@
+# 🎟️ Ticket Reservation System - Frontend
 
-# 🎨 Ticket Reservation System - Frontend
+## 📌 Descripción
+Interfaz de usuario para el sistema de reserva de tickets. Permite ver eventos, reservar tickets y gestionar eventos (solo admin). Desarrollado con React, Vite y TailwindCSS.
 
-This is the frontend service for the Ticket Reservation System, designed to provide an intuitive interface for users to view events and reserve tickets.
+## 🚀 Tecnologías
+- React (v18)
+- Vite (v8)
+- TailwindCSS (v4)
+- Axios (Consumo de API)
+- React Router (Navegación)
+- Docker (Contenerización)
 
-## 📜 Project Overview
+## 📁 Estructura del Proyecto
 
-The frontend allows users to:
-- 👀 View available events
-- 🔍 Filter events by date, location, and ticket availability
-- 🎟️ Reserve tickets for selected events
-- ✅ Confirm their reservations
+frontend/
+├── src/
+│   ├── api/
+│   │   └── axiosConfig.js     # Configuración de Axios
+│   ├── components/
+│   │   ├── EventList.jsx
+│   │   ├── EventDetail.jsx
+│   │   ├── ReservationForm.jsx
+│   │   ├── ReservationConfirmation.jsx
+│   │   └── ProtectedRoute.jsx
+│   ├── context/
+│   │   └── AuthContext.jsx    # Contexto de autenticación
+│   ├── pages/
+│   │   ├── Home.jsx
+│   │   ├── Login.jsx
+│   │   ├── Register.jsx
+│   │   └── EventPage.jsx
+│   ├── App.jsx
+│   └── main.jsx
+├── public/
+├── Dockerfile
+├── docker-compose.yml
+├── package.json
+├── .env.example
+└── .gitignore
 
-The frontend is built using modern JavaScript frameworks such as [React.js](https://reactjs.org/) or [Vue.js](https://vuejs.org/) and is fully dockerized for easy deployment.
+## 📦 Instalación y Ejecución
 
-## ⚙️ Requirements
+### Opción 1: Con Docker (Recomendado)
+git clone https://github.com/AlexAdrianPerezSoriano/ticket-frontend.git
+cd ticket-frontend
+docker compose up --build
 
-- Node.js
-- Docker
-- Docker Compose
+La aplicación estará disponible en: http://localhost
 
-## 🚀 Setup
+### Opción 2: Desarrollo local
+npm install
+cp .env.example .env  # Configura la URL del backend
+npm run dev           # Inicia el servidor
 
-### 1. 📂 Clone the Repository
+## 🔧 Variables de Entorno (.env)
+Crea un archivo .env basado en .env.example:
 
-```bash
-git clone https://github.com/codediaz/ct-candidates-app-frontend.git
-cd ct-candidates-app-frontend
-```
+VITE_API_URL=http://localhost:5000
 
-### 2. 🔧 Environment Variables
+En producción: Cambia VITE_API_URL por la URL del backend desplegado.
 
-Create a `.env` file in the frontend root directory to configure environment variables such as the backend API URL.
+## 👥 Roles y Permisos
 
-Example `.env` file:
+| Acción | Usuario Estándar | Administrador |
+|--------|------------------|---------------|
+| Ver eventos | ✅ | ✅ |
+| Ver detalles | ✅ | ✅ |
+| Reservar tickets | ✅ | ✅ |
+| Crear eventos | ❌ | ✅ |
+| Editar eventos | ❌ | ✅ |
+| Eliminar eventos | ❌ | ✅ |
 
-```
-REACT_APP_API_URL=http://localhost:3000
-PORT=3001
-```
+## 👥 Credenciales de Prueba
+- Admin: admin@example.com / admin123
+- User: user@example.com / user123
 
-### 3. 🐳 Docker Setup
+## 🖥️ Funcionalidades
 
-Ensure Docker and Docker Compose are installed on your machine. Build and start the frontend container using the following command:
+### Usuario no autenticado
+- Registrarse
+- Iniciar sesión
 
-```bash
-docker-compose up --build
-```
+### Usuario autenticado
+- Ver lista de eventos
+- Filtrar eventos (ciudad, fecha, disponibilidad)
+- Ver detalles de evento
+- Reservar tickets
+- Ver confirmación de reserva
+- Cerrar sesión
 
-This will start the frontend service and link it to the backend as defined in Docker Compose.
+### Administrador (adicional)
+- Crear eventos
+- Editar eventos
+- Eliminar eventos
 
-### 4. 💻 Access the Application
+## 🐳 Dockerización
 
-Once the containers are running, access the application in your web browser at:
+docker compose up --build
 
-```
-http://localhost:3001
-```
+Servicios incluidos:
+- frontend: React + Nginx
 
-## 🛠️ Usage
+## 📝 Autor
+Alex Pérez Soriano
+https://www.linkedin.com/in/alexperezsoriano/
 
-The frontend interacts with the backend API to fetch event data and handle ticket reservations. Ensure the backend service is running to experience the full functionality.
+## 📅 Fecha
+Septiembre 2026
 
-## 🤝 Contribution
-
-### Pull Request Guidelines for Candidates
-
-If you are a candidate completing this technical test, please ensure your Pull Request (PR) includes:
-1. A clear title summarizing the changes (e.g., "Implement event filtering and reservation functionality").
-2. A detailed description covering:
-   - The purpose of the PR.
-   - The main changes introduced, including any UI components or interactions added.
-   - Any new dependencies or setup steps.
-   - Instructions for testing your implementation, if applicable.
-3. Ensure that your code follows best practices, with clean and commented code.
-
-Follow the [Git Flow](https://nvie.com/posts/a-successful-git-branching-model/) model.
-
-## 📄 License
-
-This project is licensed under the MIT License. See the `LICENSE` file for details.
-
-## 📬 Contact
-
-For any inquiries, please reach out to [Sergio Díaz](mailto:sergio.diaz@funiber.org).
+## 📄 Licencia
+Este proyecto fue desarrollado como prueba técnica.
